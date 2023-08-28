@@ -1,0 +1,33 @@
+#include <DynamixelSerial.h>
+
+int Temperature , Voltage , Position ;
+
+
+void setup() {
+  // put your setup code here, to run once:
+
+Serial.begin ( 9600 ) ;
+Dynamixel.begin ( 57143 , 2 ) ;
+delay ( 1000 ) ;
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+Temperature = Dynamixel.readTemperature ( 1 ) ;
+Voltage = Dynamixel.readVoltage ( 1 ) ;
+Position = Dynamixel.readPosition ( 1 ) ;
+
+Dynamixel.move ( 1 , random ( 200 , 800 )) ;
+Serial.print ("*** Temperature : ") ;
+Serial.print ( Temperature ) ;
+Serial.print ("*** Celcius Voltage : ") ;
+Serial.print ( Voltage ) ;
+Serial.print ("*** Volts Position : ") ;
+Serial.print ( Position ) ;
+Serial.println ( " of 1023 resolution " ) ;
+
+delay ( 200 ) ;
+
+}
