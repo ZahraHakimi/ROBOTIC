@@ -1,0 +1,46 @@
+int trig = 13 ;
+int echo = 12 ;
+int ENA = 10 ; 
+int IN1 = 9 ;
+int IN2 = 8 ; 
+
+long duration , distance ;
+
+void setup() {
+  // put your setup code here, to run once:
+
+pinMode (trig , OUTPUT ) ;
+pinMode (echo , INPUT ) ;
+pinMode (ENA , OUTPUT ) ;
+pinMode (IN1 , OUTPUT ) ;
+pinMode (IN2 , OUTPUT ) ; 
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+digitalWrite ( trig , LOW ); 
+delayMicroseconds ( 2 ) ;
+digitalWrite ( trig , HIGH ) ; 
+delayMicroseconds ( 10 ) ; 
+duration = pulseIn ( echo , HIGH ) ; 
+distance = duration / 58.2 ;
+delay ( 10 ) ;
+
+if ( distance > 19 ) {
+
+  digitalWrite ( ENA , 225 ) ;
+  digitalWrite (IN1 , HIGH ); 
+  digitalWrite (IN2 , LOW ) ;
+  
+  }
+
+if ( distance < 18 ) {
+  digitalWrite ( ENA , 0 ) ;
+  digitalWrite (IN1 , HIGH ); 
+  digitalWrite (IN2 , LOW ) ;
+  
+  }
+
+}
